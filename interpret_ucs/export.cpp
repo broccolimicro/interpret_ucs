@@ -40,8 +40,11 @@ parse_ucs::variable_name export_variable_name(ucs::variable variable)
 parse_ucs::variable_name export_variable_name(int variable, const ucs::variable_set &variables)
 {
 	parse_ucs::variable_name result;
-	if (variable >= 0 && variable < (int)variables.nodes.size())
+	if (variable >= 0 && variable < (int)variables.nodes.size()) {
 		result = export_variable_name(variables.nodes[variable]);
+	} else if (variable < 0) {
+		result = export_variable_name(ucs::variable("#"+to_string(-variable-1)));
+	}
 	return result;
 }
 
