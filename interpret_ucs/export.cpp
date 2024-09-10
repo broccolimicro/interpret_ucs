@@ -43,7 +43,7 @@ parse_ucs::variable_name export_variable_name(int variable, const ucs::variable_
 	if (variable >= 0 && variable < (int)variables.nodes.size()) {
 		result = export_variable_name(variables.nodes[variable]);
 	} else if (variable < 0) {
-		result = export_variable_name(ucs::variable("#"+to_string(-variable-1)));
+		result = export_variable_name(ucs::variable("_"+to_string(-variable-1)));
 	}
 	return result;
 }

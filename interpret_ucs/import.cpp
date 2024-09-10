@@ -63,8 +63,8 @@ vector<int> define_variables(const parse_ucs::variable_name &syntax, ucs::variab
 	vector<ucs::variable> v = import_variables(syntax, default_id, tokens);
 	vector<int> result;
 	for (int i = 0; i < (int)v.size(); i++) {
-		if ((int)v[i].name.size() == 1 and not v[i].name[0].name.empty() and v[i].name[0].name[0] == '#') {
-			result.push_back(atoi(v[i].name[0].name.substr(1).c_str()));
+		if (v[i].isnode()) {
+			result.push_back(-stoi(v[i].name[0].name.substr(1))-1);
 			continue;
 		}
 
